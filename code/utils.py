@@ -1,9 +1,6 @@
 import torch
 import numpy as np
-from config import PARAMS
 from sklearn.metrics import balanced_accuracy_score
-
-opt = PARAMS()
 
 def map_label_hk(label, classes):
     mapped_label = np.empty((label.shape[0],), np.int8)
@@ -35,12 +32,17 @@ def mse_custom_loss(latent_from_vis, latent_from_att):
     L2 = torch.sum((latent_from_vis - latent_from_att) ** 2)
     return L2
 
-def evaluate_model_performance(net, data):
+def evaluate_model_performance(model, data, opt):
     mapped_batch_label = map_label(data.val_label, data.val_classes)
     allattributes = data.allattribute.detach().cpu().numpy()
     val_att = allattributes[mapped_batch_label]
     val_att_normalized = val_att / np.linalg.norm(val_att, axis=1, keepdims=True)
-    pred_att_val = net(data.val_feature.cuda(), torch.tensor(val_att_normalized).cuda())
+
+    if opt.cuda:
+        pred_att_val = model(data.val_feature.cuda(), torch.tensor(val_att_normalized).cuda())
+    else:
+        pred_att_val = model(data.val_feature.cpu(), torch.tensor(val_att_normalized).cpu())
+
     pred_att_val = pred_att_val.detach().cpu().numpy()
     val_label = data.val_label.detach().cpu().numpy()
     val_attributes = allattributes[len(data.train_classes):]
