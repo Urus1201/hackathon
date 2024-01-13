@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from config import PARAMS
+from utils import weights_init
 
 opt = PARAMS()
 
@@ -18,6 +19,9 @@ class ZeroShotModel(nn.Module):
         self.dropout1 = nn.Dropout(opt.dropout_rate)
 
         self.fc2 = nn.Linear(opt.hidden_dim, opt.att_size)
+
+        #Initialize model weights/parameters
+        self.apply(weights_init)
 
     def forward(self, image_features, text_embeddings):
         # Project image features and side information embeddings

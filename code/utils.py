@@ -1,4 +1,7 @@
 import torch
+import torch.nn as nn
+import math
+
 import numpy as np
 from sklearn.metrics import balanced_accuracy_score
 
@@ -17,11 +20,11 @@ def map_label(label, classes):
 def weights_init(m):
     classname = m.__class__.__name__
     if classname.find('Linear') != -1:
-        m.weight.data.normal_(0.0, 0.02)
+        nn.init.kaiming_uniform_(m.weight, a=math.sqrt(5))
         m.bias.data.fill_(0)
     elif classname.find('BatchNorm') != -1:
-        m.weight.data.normal_(1.0, 0.02)
-        m.bias.data.fill_(0)
+        nn.init.normal_(m.weight, 1.0, 0.02)
+        nn.init.constant_(m.bias, 0)
 
 def sample(data, opt, input_res, input_att):
     batch_feature, batch_att = data.next_batch(opt.batch_size)

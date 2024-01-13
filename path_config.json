@@ -10,5 +10,11 @@
         "label_path": "../data/test/test_set1_label.csv",
         "attribute_path": "../data/test/test_set1_attribute.csv",
         "image_names_path": "../data/test/test_set1_image_names.csv"
+    },
+    "train&test":{
+        "feature_path": "../data/train_test/train_test_feature.csv",
+        "label_path": "../data/train_test/train_test_label.csv",
+        "attribute_path": "../data/train_test/train_test_attribute.csv",
+        "image_names_path": "../data/train_test/train_test_image_names.csv"
     }
 }

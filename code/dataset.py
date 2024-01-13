@@ -21,11 +21,10 @@ class DATA_LOADER_HK(object):
 
     if mode == 'train':
       #Load the training dataset. You need to copy it to Google drive. and place in the DS_Hackathon2023 directory.
-      train_config = config.get(mode)
+      train_config = config.get('train&test') #change this to 'train' if you only want to use the train dataset
       train_feature = pd.read_csv(train_config["feature_path"]).values
       train_label = pd.read_csv(train_config["label_path"]).values.flatten()
       train_attribute = pd.read_csv(train_config["attribute_path"]).values
-      train_image_names = pd.read_csv(train_config["image_names_path"]).values
 
       train_classes = np.unique(train_label)
 

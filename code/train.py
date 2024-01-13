@@ -22,7 +22,7 @@ def train_model(opt):
 	input_att = torch.FloatTensor(opt.batch_size, opt.att_size)
 
     #Set up optimizer
-	optimizer = optim.AdamW(net_model.parameters(), lr=opt.lr, betas=(0.5, 0.999), weight_decay=0.0001)
+	optimizer = optim.AdamW(net_model.parameters(), lr=opt.lr) #, betas=(0.5, 0.999), weight_decay=0.0001
 	
 	#Transfer your data and model to GPU if available
 	if opt.cuda:

@@ -51,9 +51,9 @@ if __name__ == "__main__":
 
     # Load the trained model checkpoint
     if opt.cuda:
-        checkpoint = torch.load('../model/model_acc_0.75.pt')
+        checkpoint = torch.load('../model/model_acc_0.77.pt')
     else:
-        checkpoint = torch.load('../model/model_acc_0.75.pt', map_location=torch.device('cpu'))
+        checkpoint = torch.load('../model/model_acc_0.77.pt', map_location=torch.device('cpu'))
 
     net_model.load_state_dict(checkpoint)
 

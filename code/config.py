@@ -2,7 +2,7 @@
 class PARAMS(object):
   def __init__(self):
       #Model weights are updated by processing self.batch_size number of training samples
-      self.batch_size=32
+      self.batch_size=64
       #Visual feature dimension
       self.res_size=2048
       #Semantic/textual feature dimension
@@ -10,7 +10,7 @@ class PARAMS(object):
       #Total number of epochs
       self.nepoch=5
       #Learning rate for model training
-      self.lr=0.0001
+      self.lr=1e-3
       #True of if GPU available else false
       self.cuda=False
       #Fix the experiment seed for reproducibility
