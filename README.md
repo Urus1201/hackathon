@@ -29,7 +29,7 @@ Highlight the key features of your project.
 To run the project install the dependencies from `requirements.txt`. By 
 
 ```python
-# Example installation command
+# Install required dependencies
 pip install -r requirements.txt
 ```
 
@@ -37,6 +37,15 @@ pip install -r requirements.txt
 
 What do you want to do?
 
-**A. Train Model:** Navigate to `code` folder in your terminal and then type in the following command : `python train.py`
+**A. Train Model:** Navigate to `code` folder in your terminal and then type in the following command : 
+```python
+# Re-train the model
+python train.py
+```
 
-**B. Predict Results:** Navigate to `code` folder in your terminal and then type in the following command: `python predict.py`. The final prediction result is stored in `results` folder. You can upload it to kaggle from there.
+**B. Predict Results:** Navigate to `code` folder in your terminal and then type in the following command :
+```python
+# Predict the semantic attributes
+python predict.py
+```
+📝**Note:** The final prediction result is stored in `results` folder. You can upload it to kaggle from there.
