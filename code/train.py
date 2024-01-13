@@ -7,6 +7,8 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.autograd import Variable
 
+from time import gmtime, strftime
+
 
 
 def train_model(opt):
@@ -56,6 +58,10 @@ def train_model(opt):
 				print('[%5d] Loss: %.4f |Acc: ZSL %.4f, %d ctr'%(epoch, total_loss, val_zsl_acc, ctr))
 			#Set up the model back to training mode i.e. allows weight updates by gradients
 			net_model.train()
+
+		if epoch == (opt.nepoch -1):
+			time = strftime("%Y-%m-%d_%H-%M-%S", gmtime())
+			torch.save(net_model.state_dict(), f'/content/drive/MyDrive/Colab Notebooks/hackathon/model/model_{time}.pt')
 
 
 if __name__ == "__main__":

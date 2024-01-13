@@ -1,6 +1,6 @@
-# Project Name
+# Data Science Global Hackathon 2023-24
 
-Short description or tagline for your project.
+The aim of the Hackathon is to perform `Zero-shot-Learning` where labeled data along with some side information are available. The model needs to learn this realtionship such that given new features, the model should be able to predict the text embeddings.
 
 ## Table of Contents
 
@@ -24,18 +24,19 @@ Provide a more detailed description of your project. What does it do? Why is it 
 
 Highlight the key features of your project.
 
-## Getting Started
-
-Guide users through the process of setting up and running your project.
-
 ### Prerequisites
 
-List any software, libraries, or dependencies that users need to have installed before they can use your project.
+To run the project install the dependencies from `requirements.txt`. By 
 
-### Installation
-
-Provide step-by-step instructions on how to install your project.
-
-```bash
+```python
 # Example installation command
-pip install your-project-name
+pip install -r requirements.txt
+```
+
+## Getting Started
+
+What do you want to do?
+
+**A. Train Model:** Navigate to `code` folder in your terminal and then type in the following command : `python train.py`
+
+**B. Predict Results:** Navigate to `code` folder in your terminal and then type in the following command: `python predict.py`. The final prediction result is stored in `results` folder. You can upload it to kaggle from there.
