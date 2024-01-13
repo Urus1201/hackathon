@@ -17,7 +17,21 @@ The aim of the Hackathon is to perform `Zero-shot-Learning` where labeled data a
 
 ## Description
 
-TODO: Will add later
+- **Code**: The `code` folder comprises all the necessary scripts for either (a) training or (b) making predictions. Please refer to the Getting Started section for detailed instructions.
+
+- **Data**: The `data` folder houses the entire dataset. 
+  - The `train` 📂 directory contains files from train set 1.
+  - The `test` 📂 directory includes files from test set 2.
+  - The `train_test` 📂 directory consolidates files from both train set 1 and test set 1, designed for model training.
+
+- **Model**: In the `model` folder, you'll find the saved model obtained after the training process.
+
+- **Notebooks**: The `notebooks` folder holds notebooks used during the training process. These notebooks are optimized for execution on Google Colab. Be sure to adjust the file paths if running on a different environment.
+
+- **Results**: The `results` folder contains model predictions submitted on Kaggle.
+
+📝 Note: If utilizing the script to generate predictions, ensure a thorough review of folder paths in the `path_config.json` file.
+
 
 ## Features
 
