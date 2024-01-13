@@ -12,17 +12,20 @@ from utils import map_label, mse_custom_loss
 def predict_new_instances(model, data, opt):
     model.eval()
 
-    # Assuming you have new instances (features, attributes, etc.)
-    # Replace the following lines with your actual new instance data loading/preprocessing
-    new_instance_feature = torch.from_numpy(...)  # Replace with your new instance feature
-    new_instance_attribute = torch.from_numpy(...)  # Replace with your new instance attribute
+    #test data
+    test_res = torch.from_numpy(data.test_feature).float()
+    test_att = torch.from_numpy(data.attributes).float()
 
     # Normalize the attributes
-    new_instance_attribute = nn.functional.normalize(new_instance_attribute, dim=1)
+    test_att_normalized = nn.functional.normalize(test_att, dim=1)
+
+    if opt.cuda:
+        test_res = test_res.cuda()
+        test_att = test_att_normalized.cuda()
 
     # Forward pass to obtain predictions
     with torch.no_grad():
-        pred_sem = model(new_instance_feature, new_instance_attribute)
+        pred_sem = model(test_res, test_att_normalized)
         pred_sem = pred_sem.cpu().detach().numpy()
 
     #save the predictions
@@ -41,20 +44,21 @@ if __name__ == "__main__":
     opt = PARAMS()
 
     # Instantiate the DATA_LOADER_HK class
-    data = DATA_LOADER_HK(opt, mode='test')
+    data = DATA_LOADER_HK(opt, mode='test', config_path='../path_config.json')
 
     # Instantiate the model
-    net_model = ZeroShotModel() 
+    net_model = ZeroShotModel(opt) 
 
     # Load the trained model checkpoint
-    checkpoint = torch.load('../model/model_acc_0.75.pt') 
+    if opt.cuda:
+        checkpoint = torch.load('../model/model_acc_0.75.pt')
+    else:
+        checkpoint = torch.load('../model/model_acc_0.75.pt', map_location=torch.device('cpu'))
+
     net_model.load_state_dict(checkpoint)
 
     # cast the model to right device
-    net_model.to(opt.device)
+    # net_model.to(opt.device)
 
     # Predict new instances
     predicted_labels = predict_new_instances(net_model, data, opt)
-
-    # Now 'predicted_labels' contains the predicted labels for your new instances
-    print(predicted_labels)

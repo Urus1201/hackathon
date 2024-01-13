@@ -12,7 +12,7 @@ class PARAMS(object):
       #Learning rate for model training
       self.lr=0.0001
       #True of if GPU available else false
-      self.cuda=True
+      self.cuda=False
       #Fix the experiment seed for reproducibility
       self.manual_seed=0
       #hidden dim

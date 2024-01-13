@@ -6,9 +6,9 @@
         "image_names_path": "../data/train/train_image_names.csv"
     },
     "test": {
-        "feature_path": "../data/test/test_feature.csv",
-        "label_path": "../data/test/test_label.csv",
-        "attribute_path": "../data/test/test_attribute.csv",
-        "image_names_path": "../data/test/test_image_names.csv"
+        "feature_path": "../data/test/test_set1_feature.csv",
+        "label_path": "../data/test/test_set1_label.csv",
+        "attribute_path": "../data/test/test_set1_attribute.csv",
+        "image_names_path": "../data/test/test_set1_image_names.csv"
     }
 }

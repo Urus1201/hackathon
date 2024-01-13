@@ -19,6 +19,7 @@ sdist/
 develop-eggs/
 .installed.cfg
 lib-dynload/
+hackathon/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

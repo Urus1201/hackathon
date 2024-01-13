@@ -14,6 +14,7 @@ opt = PARAMS()
 class DATA_LOADER_HK(object):
   def __init__(self, opt, config_path, mode='train'):
     with open(config_path, 'r') as config_file:
+      # print(config_file.read())
       config = json.load(config_file)
     
     scaler = preprocessing.StandardScaler()
@@ -21,10 +22,10 @@ class DATA_LOADER_HK(object):
     if mode == 'train':
       #Load the training dataset. You need to copy it to Google drive. and place in the DS_Hackathon2023 directory.
       train_config = config.get(mode)
-      train_feature = pd.read_csv(train_config["train_feature_path"]).values
-      train_label = pd.read_csv(train_config["train_label_path"]).values.flatten()
-      train_attribute = pd.read_csv(train_config["train_attribute_path"]).values
-      train_image_names = pd.read_csv(train_config["train_image_names_path"]).values
+      train_feature = pd.read_csv(train_config["feature_path"]).values
+      train_label = pd.read_csv(train_config["label_path"]).values.flatten()
+      train_attribute = pd.read_csv(train_config["attribute_path"]).values
+      train_image_names = pd.read_csv(train_config["image_names_path"]).values
 
       train_classes = np.unique(train_label)
 
@@ -79,10 +80,10 @@ class DATA_LOADER_HK(object):
 
     elif mode == "test":
       test_config = config.get(mode)
-      test_feature = pd.read_csv(test_config["train_feature_path"]).values
-      test_label = pd.read_csv(test_config["train_label_path"]).values.flatten()
-      test_attribute = pd.read_csv(test_config["train_attribute_path"]).values
-      test_image_names = pd.read_csv(test_config["train_image_names_path"]).values
+      test_feature = pd.read_csv(test_config["feature_path"]).values
+      test_label = pd.read_csv(test_config["label_path"]).values.flatten()
+      test_attribute = pd.read_csv(test_config["attribute_path"]).values
+      test_image_names = pd.read_csv(test_config["image_names_path"]).values
 
       test_classes = np.unique(test_label)
       self.test_classes = test_classes
