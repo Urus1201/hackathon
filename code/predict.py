@@ -41,7 +41,7 @@ if __name__ == "__main__":
     opt = PARAMS()
 
     # Instantiate the DATA_LOADER_HK class
-    data = DATA_LOADER_HK(opt)
+    data = DATA_LOADER_HK(opt, mode='test')
 
     # Instantiate the model
     net_model = ZeroShotModel() 
